@@ -1,0 +1,22 @@
+{
+    "name": "gretaa/tvs",
+    "description": "3rd sprinti project in BIT coding school",
+    "type": "project",
+    "authors": [
+        {
+            "name": "gretanorv",
+            "email": "gretanorv@gmail.com"
+        }
+    ],
+    "require": {
+        "doctrine/orm": "^2.8"
+    },
+    "autoload": {
+        "psr-4": { 
+			"Models\\": "src/models/"
+		}
+    },
+    "require-dev": {
+        "symfony/var-dumper": "^5.2"
+    }
+}
