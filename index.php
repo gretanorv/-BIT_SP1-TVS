@@ -17,25 +17,31 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
     $redirect_to = strstr($_SERVER['REQUEST_URI'], "/", true);
     print("Redirected: " . $redirect_to);
     header("Location: /");
+    die();
 }
 
-//header nav
-print('<header>
+$request = $_SERVER['REQUEST_URI'];
+
+print(strstr($request, "?", true));
+if ($request !== '/admin') {
+    //header nav
+    print('<header>
     <h1>TVS</h1>
     <ul>
         <li><a href="/">Home</a></li>');
 
-//Get pages
-$page = $entityManager->getRepository('Models\Page')->findAll();
-foreach ($page as $p) {
-    print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+    //Get pages
+    $page = $entityManager->getRepository('Models\Page')->findAll();
+    foreach ($page as $p) {
+        print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+    }
+
+    print('</ul>
+</header>');
 }
 
-print('</ul>
-</header>');
 
 
-$request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/':
@@ -49,7 +55,7 @@ switch ($request) {
         false):
         require __DIR__ . '/src/views/site.php';
         break;
-    case '/admin':
+    case '/admin' or '/admin?': //for now
         require __DIR__ . '/src/views/admin.php';
         break;
     default:
