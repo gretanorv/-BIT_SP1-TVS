@@ -114,6 +114,29 @@
   background-color: #ff844b;
 }
 
+.table {
+  margin: 30px 50px;
+  border: 1px solid #4e7d96;
+  border-radius: 3px;
+  padding: 5px;
+}
+
+.table__title {
+  margin: 20px 50px;
+}
+
+.table__text {
+  min-width: 260px;
+}
+
+.table td {
+  border: 1px solid #4e7d96;
+}
+
+.table td a {
+  text-decoration: none;
+}
+
 * {
   font-family: "Montserrat", sans-serif;
   -webkit-box-sizing: border-box;

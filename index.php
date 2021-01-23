@@ -34,7 +34,6 @@
 
     $request = $_SERVER['REQUEST_URI'];
 
-    print(strstr($request, "?", true));
     // if ($request !== '/admin') {
     //header nav
     print('<header class="header">

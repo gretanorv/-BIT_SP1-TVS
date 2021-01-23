@@ -1,0 +1,22 @@
+.table {
+  margin: 30px 50px;
+  border: 1px solid #4e7d96;
+  border-radius: 3px;
+  padding: 5px;
+
+  &__title {
+    margin: 20px 50px;
+  }
+
+  &__text {
+    min-width: 260px;
+  }
+
+  & td {
+    border: 1px solid #4e7d96;
+
+    & a {
+      text-decoration: none;
+    }
+  }
+}

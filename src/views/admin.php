@@ -56,12 +56,13 @@ if (!$_SESSION['logged_in']) {
     print("<a class=\"add\" href=\"?add=true\">+</a>");
 
     $pages = $entityManager->getRepository('Models\Page')->findAll();
-    print("<table>");
+    print("<table class='table'>");
+    print("<h2 class='table__title'>Mano puslapiai</h2>");
     foreach ($pages as $p)
         print("<tr>"
-            . "<td>" . $p->getName()  . "</td>"
-            . "<td><a href=\"?delete={$p->getId()}\">DELETE</a>☢️</td>"
-            . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a>♻️</td>"
+            . "<td class='table__text'>" . $p->getName()  . "</td>"
+            . "<td><a href=\"?delete={$p->getId()}\">🗑️</a></td>"
+            . "<td><a href=\"?updatable={$p->getId()}\">✒️</a></td>"
             . "</tr>");
     print("</table>");
 }
@@ -79,7 +80,6 @@ if (isset($_GET['updatable'])) {
             <input type=\"submit\" value=\"Submit\">
         </form>
     ");
-    print("<hr>");
 }
 
 //add forma
