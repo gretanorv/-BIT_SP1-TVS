@@ -17,6 +17,7 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
     $redirect_to = strstr($_SERVER['REQUEST_URI'], "/", true);
     print("Redirected: " . $redirect_to);
     header("Location: /");
+    die();
 }
 
 //header nav
