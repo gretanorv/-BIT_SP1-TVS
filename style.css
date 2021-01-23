@@ -201,6 +201,11 @@ body {
   background-color: #e3edf2;
 }
 
+.site {
+  margin-left: 50px;
+  margin-top: 30px;
+}
+
 .title {
   margin-top: 20px;
   color: #ff844b;
