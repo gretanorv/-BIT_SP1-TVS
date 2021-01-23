@@ -1,2 +1,6 @@
 <?php
-print("TVS here");
+
+
+include_once "bootstrap.php";
+
+use Models\Page;
