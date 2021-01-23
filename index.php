@@ -4,13 +4,11 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css">
     <title>Document</title>
 </head>
 
 <body>
-
-
-
     <?php
 
 
@@ -26,7 +24,6 @@
         unset($_SESSION['timeout']);
         unset($_SESSION['username']);
         unset($_SESSION['password']);
-        // $login = false;
         $redirect_to = strstr($_SERVER['REQUEST_URI'], "/", true);
         print("Redirected: " . $redirect_to);
         header("Location: /");
@@ -53,9 +50,7 @@
 </header>');
     }
 
-
-
-
+    //router
     switch ($request) {
         case '/':
             require __DIR__ . '/src/views/home.php';
