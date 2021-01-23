@@ -22,8 +22,8 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
 
 $request = $_SERVER['REQUEST_URI'];
 
-
-if (strstr($request, "?", true) !== '/admin') {
+print(strstr($request, "?", true));
+if ($request !== '/admin') {
     //header nav
     print('<header>
     <h1>TVS</h1>
@@ -55,7 +55,7 @@ switch ($request) {
         false):
         require __DIR__ . '/src/views/site.php';
         break;
-    case '/admin':
+    case '/admin' or '/admin?': //for now
         require __DIR__ . '/src/views/admin.php';
         break;
     default:
