@@ -22,7 +22,8 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
 
 $request = $_SERVER['REQUEST_URI'];
 
-if ($request !== '/admin') {
+
+if (strstr($request, "?", true) !== '/admin') {
     //header nav
     print('<header>
     <h1>TVS</h1>
