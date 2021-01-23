@@ -21,20 +21,21 @@ if (isset($_POST['login']) and !empty($_POST['username']) and !empty($_POST['pas
 if (!$_SESSION['logged_in']) {
 
 ?>
-
-    <h2 class="title title--login">Login</h2>
-    <form class="login-form" method="post">
-        <div class="login-form__field">
-            <label for="username" class="login-form__field-label">Username</label>
-            <input type="text" name="username" id="username" class="login-form__field-input" placeholder="name: admin" required autofocus>
-        </div>
-        <div class="login-form__field">
-            <label for="password" class="login-form__field-label">Password</label>
-            <input type="password" name="password" id="password" class="login-form__field-input" placeholder="pass: admin" required>
-        </div>
-        <input type="submit" value="Login" name="login" class="login-form__btn">
-    </form>
-    <h4 class="error-login"><?php echo $msg ?></h4>
+    <div class="admin">
+        <h2 class="title title--admin">Prisijunkite</h2>
+        <form class="admin-form" method="post">
+            <div class="admin-form__field">
+                <label for="username" class="admin-form__field-label">Vartotojas</label>
+                <input type="text" name="username" id="username" class="admin-form__field-input" placeholder="name: admin" required autofocus>
+            </div>
+            <div class="admin-form__field">
+                <label for="password" class="admin-form__field-label">Slaptažodis</label>
+                <input type="password" name="password" id="password" class="admin-form__field-input" placeholder="pass: admin" required>
+            </div>
+            <input type="submit" value="Prisijungti" name="login" class="admin-form__btn">
+        </form>
+        <h4 class="error-admin"><?php echo $msg ?></h4>
+    </div>
 
 <?php } elseif ($_SESSION['logged_in']) {
 
@@ -48,53 +49,51 @@ if (!$_SESSION['logged_in']) {
         exit;
     } else {
         $_SESSION['timeout'] = time();
-    }
-
-
-    print("Login successful"); ?>
-
-    <a class="logout" href="?action=logout">Logout</a>/
+    } ?>
 
 
 <?php
+    print("<a class=\"add\" href=\"?add=true\">+</a>");
 
     $pages = $entityManager->getRepository('Models\Page')->findAll();
-    print("<table>");
+    print("<table class='table'>");
+    print("<h2 class='table__title'>Mano puslapiai</h2>");
     foreach ($pages as $p)
         print("<tr>"
-            . "<td>" . $p->getName()  . "</td>"
-            . "<td><a href=\"?delete={$p->getId()}\">DELETE</a>☢️</td>"
-            . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a>♻️</td>"
+            . "<td class='table__text'>" . $p->getName()  . "</td>"
+            . "<td><a href=\"?delete={$p->getId()}\">🗑️</a></td>"
+            . "<td><a href=\"?updatable={$p->getId()}\">✒️</a></td>"
             . "</tr>");
     print("</table>");
-    print("<a href=\"?add=true\">Add new</a>");
 }
 
 //update forma
 if (isset($_GET['updatable'])) {
     $page = $entityManager->find('Models\Page', $_GET['updatable']);
-    print("<pre>Update Page: </pre>");
+    print("<h3 class=\"form__title\">Redaguoti puslapį</h3>");
     print("
-        <form action=\"\" method=\"POST\">
+        <form class=\"form\" action=\"\" method=\"POST\">
         <input type=\"hidden\" name=\"update_id\" value=\"{$page->getId()}\">
-            <label for=\"name\">Page name: </label><br>
-            <input type=\"text\" name=\"update_name\" value=\"{$page->getName()}\"><br>
-            <textarea name='update_content' id=''cols='30' rows='10'>{$page->getContent()}</textarea>
-            <input type=\"submit\" value=\"Submit\">
+            <label class=\"form__label\" for=\"name\">Puslapio pavadinimas</label>
+            <input class=\"form__input\" type=\"text\" name=\"update_name\" value=\"{$page->getName()}\">
+            <label class=\"form__label\" for=\"content\">Turinys</label>
+            <textarea class=\"form__textarea\" name='update_content' id='content'cols='30' rows='10'>{$page->getContent()}</textarea>
+            <input class=\"form__btn\" type=\"submit\" value=\"Saugoti\">
         </form>
     ");
-    print("<hr>");
 }
 
 //add forma
 if (isset($_GET['add'])) {
+    print("<h3 class=\"form__title\">Redaguoti puslapį</h3>");
     print("
-        <form action=\"\" method=\"POST\">
+        <form class=\"form\" action=\"\" method=\"POST\">
         <input type=\"hidden\" name=\"id\">
-            <label for=\"name\">Page name: </label><br>
-            <input type=\"text\" name=\"name\"><br>
-            <textarea name='content' id=''cols='30' rows='10'></textarea>
-            <input type=\"submit\" value=\"Submit\">
+            <label class=\"form__label\" for=\"name\">Page name: </label>
+            <input class=\"form__input\" type=\"text\" name=\"name\">
+            <label class=\"form__label\" for=\"content\">Turinys</label>
+            <textarea class=\"form__textarea\" name='content' id='content' cols='30' rows='10'></textarea>
+            <input class=\"form__btn\" type=\"submit\" value=\"Saugoti\">
         </form>
     ");
 }

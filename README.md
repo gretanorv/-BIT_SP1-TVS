@@ -3,5 +3,6 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteRule ^(.*)$ <path-to-project-here>/index.php/$1 [L]
+RewriteRule ^(.*)$ TVS/index.php/$1 [L]
+RewriteRule \.css$ TVS/style.css [L]
 </IfModule>
