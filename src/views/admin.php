@@ -70,27 +70,30 @@ if (!$_SESSION['logged_in']) {
 //update forma
 if (isset($_GET['updatable'])) {
     $page = $entityManager->find('Models\Page', $_GET['updatable']);
-    print("<pre>Update Page: </pre>");
+    print("<h3 class=\"form__title\">Redaguoti puslapį</h3>");
     print("
-        <form action=\"\" method=\"POST\">
+        <form class=\"form\" action=\"\" method=\"POST\">
         <input type=\"hidden\" name=\"update_id\" value=\"{$page->getId()}\">
-            <label for=\"name\">Page name: </label><br>
-            <input type=\"text\" name=\"update_name\" value=\"{$page->getName()}\"><br>
-            <textarea name='update_content' id=''cols='30' rows='10'>{$page->getContent()}</textarea>
-            <input type=\"submit\" value=\"Submit\">
+            <label class=\"form__label\" for=\"name\">Puslapio pavadinimas</label>
+            <input class=\"form__input\" type=\"text\" name=\"update_name\" value=\"{$page->getName()}\">
+            <label class=\"form__label\" for=\"content\">Turinys</label>
+            <textarea class=\"form__textarea\" name='update_content' id='content'cols='30' rows='10'>{$page->getContent()}</textarea>
+            <input class=\"form__btn\" type=\"submit\" value=\"Saugoti\">
         </form>
     ");
 }
 
 //add forma
 if (isset($_GET['add'])) {
+    print("<h3 class=\"form__title\">Redaguoti puslapį</h3>");
     print("
-        <form action=\"\" method=\"POST\">
+        <form class=\"form\" action=\"\" method=\"POST\">
         <input type=\"hidden\" name=\"id\">
-            <label for=\"name\">Page name: </label><br>
-            <input type=\"text\" name=\"name\"><br>
-            <textarea name='content' id=''cols='30' rows='10'></textarea>
-            <input type=\"submit\" value=\"Submit\">
+            <label class=\"form__label\" for=\"name\">Page name: </label>
+            <input class=\"form__input\" type=\"text\" name=\"name\">
+            <label class=\"form__label\" for=\"content\">Turinys</label>
+            <textarea class=\"form__textarea\" name='content' id='content' cols='30' rows='10'></textarea>
+            <input class=\"form__btn\" type=\"submit\" value=\"Saugoti\">
         </form>
     ");
 }

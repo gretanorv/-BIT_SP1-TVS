@@ -49,7 +49,7 @@
 
     print('</ul>');
     if ($_SESSION['logged_in']) {
-        print('<a class="logout" href="?action=logout">Logout</a>');
+        print('<a class="logout" href="?action=logout">Atsijungti</a>');
     }
     print('</header>');
     // }
@@ -76,6 +76,7 @@
             break;
     }
     ?>
+    <footer class="footer">Greta Norvilaite</footer>
 
 </body>
 
