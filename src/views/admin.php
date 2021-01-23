@@ -1,6 +1,5 @@
 <?php
 
-print("admin page");
 
 //login logic
 if (isset($_POST['login']) and !empty($_POST['username']) and !empty($_POST['password'])) {

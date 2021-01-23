@@ -20,23 +20,27 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
     die();
 }
 
-//header nav
-print('<header>
+$request = $_SERVER['REQUEST_URI'];
+
+if ($request !== '/admin') {
+    //header nav
+    print('<header>
     <h1>TVS</h1>
     <ul>
         <li><a href="/">Home</a></li>');
 
-//Get pages
-$page = $entityManager->getRepository('Models\Page')->findAll();
-foreach ($page as $p) {
-    print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+    //Get pages
+    $page = $entityManager->getRepository('Models\Page')->findAll();
+    foreach ($page as $p) {
+        print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+    }
+
+    print('</ul>
+</header>');
 }
 
-print('</ul>
-</header>');
 
 
-$request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/':
