@@ -35,22 +35,22 @@
     $request = $_SERVER['REQUEST_URI'];
 
     print(strstr($request, "?", true));
-    if ($request !== '/admin') {
-        //header nav
-        print('<header class="header">
+    // if ($request !== '/admin') {
+    //header nav
+    print('<header class="header">
     <h3 class="header__title">TVS</h3>
     <ul class="header__menu">
         <li class="header__menu-item"><a href="/">Pagrindinis</a></li>');
 
-        //Get pages
-        $page = $entityManager->getRepository('Models\Page')->findAll();
-        foreach ($page as $p) {
-            print('<li class="header__menu-item"><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
-        }
-
-        print('</ul>
-</header>');
+    //Get pages
+    $page = $entityManager->getRepository('Models\Page')->findAll();
+    foreach ($page as $p) {
+        print('<li class="header__menu-item"><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
     }
+
+    print('</ul>
+</header>');
+    // }
 
     //router
     switch ($request) {

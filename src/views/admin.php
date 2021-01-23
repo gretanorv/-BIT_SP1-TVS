@@ -21,20 +21,21 @@ if (isset($_POST['login']) and !empty($_POST['username']) and !empty($_POST['pas
 if (!$_SESSION['logged_in']) {
 
 ?>
-
-    <h2 class="title title--login">Login</h2>
-    <form class="login-form" method="post">
-        <div class="login-form__field">
-            <label for="username" class="login-form__field-label">Username</label>
-            <input type="text" name="username" id="username" class="login-form__field-input" placeholder="name: admin" required autofocus>
-        </div>
-        <div class="login-form__field">
-            <label for="password" class="login-form__field-label">Password</label>
-            <input type="password" name="password" id="password" class="login-form__field-input" placeholder="pass: admin" required>
-        </div>
-        <input type="submit" value="Login" name="login" class="login-form__btn">
-    </form>
-    <h4 class="error-login"><?php echo $msg ?></h4>
+    <div class="admin">
+        <h2 class="title title--admin">Prisijunkite</h2>
+        <form class="admin-form" method="post">
+            <div class="admin-form__field">
+                <label for="username" class="admin-form__field-label">Vartotojas</label>
+                <input type="text" name="username" id="username" class="admin-form__field-input" placeholder="name: admin" required autofocus>
+            </div>
+            <div class="admin-form__field">
+                <label for="password" class="admin-form__field-label">Slaptažodis</label>
+                <input type="password" name="password" id="password" class="admin-form__field-input" placeholder="pass: admin" required>
+            </div>
+            <input type="submit" value="Prisijungti" name="login" class="admin-form__btn">
+        </form>
+        <h4 class="error-admin"><?php echo $msg ?></h4>
+    </div>
 
 <?php } elseif ($_SESSION['logged_in']) {
 

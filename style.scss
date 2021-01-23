@@ -1,9 +1,18 @@
 @import "./src/style/header";
+@import "./src/style/admin";
 
 * {
   font-family: "Montserrat", sans-serif;
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
 }
 
 body {
   background-color: #e3edf2;
+}
+
+.title {
+  margin-top: 20px;
+  color: #ff844b;
 }
