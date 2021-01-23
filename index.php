@@ -48,8 +48,11 @@
         print('<li class="header__menu-item"><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
     }
 
-    print('</ul>
-</header>');
+    print('</ul>');
+    if ($_SESSION['logged_in']) {
+        print('<a class="logout" href="?action=logout">Logout</a>');
+    }
+    print('</header>');
     // }
 
     //router

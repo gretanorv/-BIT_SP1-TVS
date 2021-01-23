@@ -49,12 +49,9 @@ if (!$_SESSION['logged_in']) {
         exit;
     } else {
         $_SESSION['timeout'] = time();
-    }
+    } ?>
 
-
-    print("Login successful"); ?>
-
-    <a class="logout" href="?action=logout">Logout</a>/
+    <!-- <a class="logout" href="?action=logout">Logout</a> -->
 
 
 <?php

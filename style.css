@@ -130,4 +130,24 @@ body {
   margin-top: 20px;
   color: #ff844b;
 }
+
+.logout {
+  position: absolute;
+  right: 50px;
+  top: 10px;
+  color: #4e7d96;
+  background-color: #fff;
+  border-radius: 5px;
+  padding: 2px 6px;
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-decoration: none;
+  -webkit-transition: color 0.3s ease-in, background-color 0.3s ease-in;
+  transition: color 0.3s ease-in, background-color 0.3s ease-in;
+}
+
+.logout:hover {
+  background-color: #ff844b;
+  color: #fff;
+}
 /*# sourceMappingURL=style.css.map */
