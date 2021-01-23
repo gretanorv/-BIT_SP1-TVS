@@ -19,16 +19,23 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
     header("Location: /");
 }
 
-
-$request = $_SERVER['REQUEST_URI'];
-
-// $req = strstr($request, "?", true);
-// print($req . '<br>');
+//header nav
+print('<header>
+    <h1>TVS</h1>
+    <ul>
+        <li><a href="/">Home</a></li>');
 
 //Get pages
 $page = $entityManager->getRepository('Models\Page')->findAll();
+foreach ($page as $p) {
+    print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+}
 
-dump($page);
+print('</ul>
+</header>');
+
+
+$request = $_SERVER['REQUEST_URI'];
 
 switch ($request) {
     case '/':
@@ -37,7 +44,9 @@ switch ($request) {
     case '':
         require __DIR__ . '/src/views/home.php';
         break;
-    case '/' . $page[0]->getName():
+    case '/' . ($entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", $request)))) ?
+        $entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", $request))))[0]->getName() :
+        false):
         require __DIR__ . '/src/views/site.php';
         break;
     case '/admin':
@@ -48,25 +57,3 @@ switch ($request) {
         require __DIR__ . '/src/views/404.php';
         break;
 }
-
-//nav
-print('<header>
-    <h1>TVS</h1>
-    <ul>
-        <li><a href="/">Home</a></li>');
-
-// //Get pages
-// $page = $entityManager->getRepository('Models\Page')->findAll();
-// foreach ($page as $p) {
-//     print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
-
-//     // print($request . " " . $p->getName());
-//     switch ($request) {
-//         case '/' . $p->getName():
-//             print($p->getContent());
-//             break;
-//     }
-// }
-
-print('</ul>
-</header>');
