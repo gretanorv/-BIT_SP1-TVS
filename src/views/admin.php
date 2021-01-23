@@ -92,3 +92,11 @@ if (isset($_POST['update_content'])) {
     $entityManager->flush();
     header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
 }
+
+//Delete
+if (isset($_GET['delete'])) {
+    $page = $entityManager->find('Models\Page', $_GET['delete']);
+    $entityManager->remove($page);
+    $entityManager->flush();
+    header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
+}
