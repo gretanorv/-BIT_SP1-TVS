@@ -17,7 +17,6 @@ if (isset($_GET['action']) and $_GET['action'] === 'logout') {
     $redirect_to = strstr($_SERVER['REQUEST_URI'], "/", true);
     print("Redirected: " . $redirect_to);
     header("Location: /");
-    // header("Refresh:0");
 }
 
 
@@ -30,8 +29,6 @@ $request = $_SERVER['REQUEST_URI'];
 $page = $entityManager->getRepository('Models\Page')->findAll();
 
 dump($page);
-// print('/' . $page[0]->getName());
-print('<hr>');
 
 switch ($request) {
     case '/':
@@ -43,7 +40,7 @@ switch ($request) {
     case '/' . $page[0]->getName():
         require __DIR__ . '/src/views/site.php';
         break;
-    case '/admin': // or '/admin?':
+    case '/admin':
         require __DIR__ . '/src/views/admin.php';
         break;
     default:

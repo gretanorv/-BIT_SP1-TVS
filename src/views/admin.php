@@ -2,28 +2,12 @@
 
 print("admin page");
 
-// //logout logic
-// if (isset($_GET['action']) and $_GET['action'] === 'logout') {
-//     session_start();
-//     unset($_SESSION['logged_in']);
-//     unset($_SESSION['timeout']);
-//     unset($_SESSION['username']);
-//     unset($_SESSION['password']);
-//     // $login = false;
-//     $redirect_to = strstr($_SERVER['REQUEST_URI'], "/", true);
-//     print("Redirected: " . $redirect_to);
-//     header("Location: {$redirect_to}");
-//     // header("Refresh:0");
-// }
-
-
 //login logic
 if (isset($_POST['login']) and !empty($_POST['username']) and !empty($_POST['password'])) {
     if ($_POST['username'] === 'admin' and $_POST['password'] === 'admin') {
         $_SESSION['logged_in'] = true;
         $_SESSION['timeout'] = time();
         $_SESSION['username'] = $_POST['username'];
-        // header("Refresh:0;");
         $msg = 'Correct';
         $login = true;
     } else {
@@ -58,7 +42,7 @@ if (!$_SESSION['logged_in']) {
         echo "<script>alert('Your session has expired. Please log in again.');</script>";
         unset($_SESSION['username'], $_SESSION['password'], $_SESSION['timeout']);
         $_SESSION['logged_in'] = false;
-        header("Refresh:0");
+        header("Location: /");
         exit;
     } else {
         $_SESSION['timeout'] = time();
