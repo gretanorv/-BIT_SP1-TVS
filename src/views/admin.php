@@ -51,10 +51,9 @@ if (!$_SESSION['logged_in']) {
         $_SESSION['timeout'] = time();
     } ?>
 
-    <!-- <a class="logout" href="?action=logout">Logout</a> -->
-
 
 <?php
+    print("<a class=\"add\" href=\"?add=true\">+</a>");
 
     $pages = $entityManager->getRepository('Models\Page')->findAll();
     print("<table>");
@@ -65,7 +64,6 @@ if (!$_SESSION['logged_in']) {
             . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a>♻️</td>"
             . "</tr>");
     print("</table>");
-    print("<a href=\"?add=true\">Add new</a>");
 }
 
 //update forma
