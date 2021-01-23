@@ -1,4 +1,9 @@
-@import "./src/style/s";
+@import "./src/style/header";
+
+* {
+  font-family: "Montserrat", sans-serif;
+}
 
 body {
+  background-color: #e3edf2;
 }

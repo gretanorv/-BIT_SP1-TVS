@@ -5,6 +5,8 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600&family=Nanum+Gothic&display=swap" rel="stylesheet">
     <title>Document</title>
 </head>
 
@@ -35,15 +37,15 @@
     print(strstr($request, "?", true));
     if ($request !== '/admin') {
         //header nav
-        print('<header>
-    <h1>TVS</h1>
-    <ul>
-        <li><a href="/">Home</a></li>');
+        print('<header class="header">
+    <h3 class="header__title">TVS</h3>
+    <ul class="header__menu">
+        <li class="header__menu-item"><a href="/">Pagrindinis</a></li>');
 
         //Get pages
         $page = $entityManager->getRepository('Models\Page')->findAll();
         foreach ($page as $p) {
-            print('<li><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+            print('<li class="header__menu-item"><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
         }
 
         print('</ul>
