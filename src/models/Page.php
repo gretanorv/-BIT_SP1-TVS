@@ -31,7 +31,6 @@ class Page
      * @ORM\Column(type="datetime", name="posted_at"),
      * options={"default": now()}
      */
-    protected $postedAt;
 
     public function getId()
     {

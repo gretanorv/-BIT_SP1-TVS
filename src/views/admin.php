@@ -2,6 +2,9 @@
 
 
 //login logic
+
+use Models\Page;
+
 if (isset($_POST['login']) and !empty($_POST['username']) and !empty($_POST['password'])) {
     if ($_POST['username'] === 'admin' and $_POST['password'] === 'admin') {
         $_SESSION['logged_in'] = true;
@@ -55,7 +58,6 @@ if (!$_SESSION['logged_in']) {
 
 <?php
 
-    print("<pre>Find all Pages: " . "<br>");
     $pages = $entityManager->getRepository('Models\Page')->findAll();
     print("<table>");
     foreach ($pages as $p)
@@ -65,7 +67,7 @@ if (!$_SESSION['logged_in']) {
             . "<td><a href=\"?updatable={$p->getId()}\">UPDATE</a>♻️</td>"
             . "</tr>");
     print("</table>");
-    print("</pre><hr>");
+    print("<a href=\"?add=true\">Add new</a>");
 }
 
 //update forma
@@ -84,6 +86,19 @@ if (isset($_GET['updatable'])) {
     print("<hr>");
 }
 
+//add forma
+if (isset($_GET['add'])) {
+    print("
+        <form action=\"\" method=\"POST\">
+        <input type=\"hidden\" name=\"id\">
+            <label for=\"name\">Page name: </label><br>
+            <input type=\"text\" name=\"name\"><br>
+            <textarea name='content' id=''cols='30' rows='10'></textarea>
+            <input type=\"submit\" value=\"Submit\">
+        </form>
+    ");
+}
+
 // Update
 if (isset($_POST['update_content'])) {
     $page = $entityManager->find('Models\Page', $_POST['update_id']);
@@ -97,6 +112,17 @@ if (isset($_POST['update_content'])) {
 if (isset($_GET['delete'])) {
     $page = $entityManager->find('Models\Page', $_GET['delete']);
     $entityManager->remove($page);
+    $entityManager->flush();
+    header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
+}
+
+//Add
+if (isset($_POST['name'])) {
+    $page = new Page();
+    $page->setName($_POST['name']);
+    $page->setContent($_POST['content']);
+    $page->setContent($_POST['content']);
+    $entityManager->persist($page);
     $entityManager->flush();
     header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
 }
