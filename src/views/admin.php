@@ -1,18 +1,20 @@
 <?php
-session_start();
 
 print("admin page");
 
-//logout logic
-if (isset($_GET['action']) and $_GET['action'] === 'logout') {
-    session_start();
-    unset($_SESSION['logged_in']);
-    unset($_SESSION['timeout']);
-    unset($_SESSION['username']);
-    unset($_SESSION['password']);
-    $login = false;
-    header("Refresh:0; url=/admin");
-}
+// //logout logic
+// if (isset($_GET['action']) and $_GET['action'] === 'logout') {
+//     session_start();
+//     unset($_SESSION['logged_in']);
+//     unset($_SESSION['timeout']);
+//     unset($_SESSION['username']);
+//     unset($_SESSION['password']);
+//     // $login = false;
+//     $redirect_to = strstr($_SERVER['REQUEST_URI'], "/", true);
+//     print("Redirected: " . $redirect_to);
+//     header("Location: {$redirect_to}");
+//     // header("Refresh:0");
+// }
 
 
 //login logic
