@@ -44,7 +44,8 @@
     //Get pages
     $page = $entityManager->getRepository('Models\Page')->findAll();
     foreach ($page as $p) {
-        print('<li class="header__menu-item"><a href=' . $p->getName() . '>' . $p->getName() . '</a></li>');
+        print('<li class="header__menu-item"><a href=' . str_replace(" ", "%20", $p->getName())
+            . '>' . $p->getName() . '</a></li>');
     }
 
     print('</ul>');
@@ -62,8 +63,8 @@
         case '':
             require __DIR__ . '/src/views/home.php';
             break;
-        case '/' . ($entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", $request)))) ?
-            $entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", $request))))[0]->getName() :
+        case '/' . ($entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", str_replace("%20", " ", $request))))) ?
+            str_replace(" ", "%20", $entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", str_replace("%20", " ", $request)))))[0]->getName()) :
             false):
             require __DIR__ . '/src/views/site.php';
             break;
