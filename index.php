@@ -34,7 +34,6 @@
 
     $request = $_SERVER['REQUEST_URI'];
 
-    // if ($request !== '/admin') {
     //header nav
     print('<header class="header">
     <h3 class="header__title">TVS</h3>
@@ -53,7 +52,12 @@
         print('<a class="logout" href="?action=logout">Atsijungti</a>');
     }
     print('</header>');
-    // }
+
+
+    if (str_contains($request, '?')) {
+        $request = substr($request, 0, strpos($request, "?"));
+    }
+
 
     //router
     switch ($request) {
@@ -68,7 +72,7 @@
             false):
             require __DIR__ . '/src/views/site.php';
             break;
-        case '/admin' or '/admin?': //for now
+        case '/admin':
             require __DIR__ . '/src/views/admin.php';
             break;
         default:
