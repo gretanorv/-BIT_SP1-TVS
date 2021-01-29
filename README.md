@@ -4,8 +4,8 @@
 <IfModule mod_rewrite.c>
 RewriteEngine on
 RewriteCond %{ENV:REDIRECT_STATUS} ^$
-RewriteRule ^(.*)$ TVS/index.php/$1 [L]
-RewriteRule \.css$ TVS/style.css [L]
+RewriteRule ^(.*)$ BIT_SP1-TVS/index.php/$1 [L]
+RewriteRule \.css$ BIT_SP1-TVS/style.css [L]
 </IfModule>
 ```
 
@@ -13,6 +13,11 @@ RewriteRule \.css$ TVS/style.css [L]
 
 ```
    php composer.phar install
+```
+
+3. Create database named 'tvs_db' and in your project's directory run this code:
+
+```
    vendor/bin/doctrine orm:schema-tool:update --force --dump-sql
 ```
 
