@@ -23,7 +23,7 @@ class Page
     protected $name;
 
     /**
-     * @ORM\Column(type="string")
+     * @ORM\Column(type="text", length=16777215)
      */
     protected $content;
 
