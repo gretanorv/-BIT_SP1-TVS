@@ -58,6 +58,7 @@
         $request = substr($request, 0, strpos($request, "?"));
     }
 
+    $arr = $entityManager->getRepository('Models\Page')->findBy(array('name' => str_replace("/", "", str_replace("/", "", str_replace("%20", " ", $request)))));
 
     //router
     switch ($request) {
