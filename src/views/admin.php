@@ -5,6 +5,15 @@
 
 use Models\Page;
 
+// Update
+if (isset($_POST['update_content'])) {
+    $page = $entityManager->find('Models\Page', $_POST['update_id']);
+    $page->setName($_POST['update_name']);
+    $page->setContent($_POST['update_content']);
+    $entityManager->flush();
+    header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
+}
+
 if (isset($_POST['login']) and !empty($_POST['username']) and !empty($_POST['password'])) {
     if ($_POST['username'] === 'admin' and $_POST['password'] === 'admin') {
         $_SESSION['logged_in'] = true;
@@ -98,14 +107,7 @@ if (isset($_GET['add'])) {
     ");
 }
 
-// Update
-if (isset($_POST['update_content'])) {
-    $page = $entityManager->find('Models\Page', $_POST['update_id']);
-    $page->setName($_POST['update_name']);
-    $page->setContent($_POST['update_content']);
-    $entityManager->flush();
-    header("Location: " . parse_url($_SERVER["REQUEST_URI"], PHP_URL_PATH));
-}
+
 
 //Delete
 if (isset($_GET['delete'])) {

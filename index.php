@@ -81,7 +81,6 @@
             break;
     }
     ?>
-    <footer class="footer">Greta Norvilaite</footer>
 
 </body>
 
